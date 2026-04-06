@@ -1,8 +1,13 @@
 /* ===== RESET ===== */
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
-  background: url("../assets/bg.jpg") no-repeat center center/cover;
+  background: url("../assets/bg.jpg") no-repeat center/cover;
   min-height: 100vh;
 }
 
@@ -10,11 +15,8 @@ body {
 body::before {
   content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  top: 0;
-  left: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
   z-index: -1;
 }
 
@@ -22,53 +24,54 @@ body::before {
 .top-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .top-buttons button {
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 25px;
   border: none;
   font-size: 14px;
   cursor: pointer;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
   color: white;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
 }
 
 .top-buttons button:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
   background: linear-gradient(45deg, #007bff, #00c6ff);
 }
 
 /* ===== MAIN CONTAINER ===== */
 .container {
-  width: 50%;
-  margin: 80px auto;
+  width: 90%;
+  max-width: 600px;
+  margin: 60px auto;
   padding: 30px;
   border-radius: 20px;
 
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
 
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
 /* ===== TITLE ===== */
 h1 {
   text-align: center;
   color: white;
-  font-size: 32px;
-  line-height: 1.3;
-  margin-bottom: 5px;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 p {
   text-align: center;
-  color: #ddd;
-  margin-bottom: 20px;
+  color: #ccc;
+  margin-bottom: 25px;
 }
 
 /* ===== FORM GRID ===== */
@@ -81,42 +84,50 @@ p {
 /* ===== INPUTS ===== */
 input {
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   outline: none;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.95);
   font-size: 14px;
+  transition: 0.3s;
+}
+
+input:focus {
+  box-shadow: 0 0 8px #00c6ff;
 }
 
 /* ===== BUTTON ===== */
 button {
   grid-column: span 2;
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   font-size: 16px;
   cursor: pointer;
 
   background: linear-gradient(45deg, #007bff, #00c6ff);
   color: white;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
+  opacity: 0.9;
 }
 
 /* ===== TABLE CONTAINER ===== */
 .table-container {
-  width: 80%;
-  margin: 50px auto;
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
   border-radius: 20px;
 
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
 
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  overflow-x: auto;
 }
 
 /* ===== TABLE ===== */
@@ -127,16 +138,20 @@ table {
 }
 
 th {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   padding: 12px;
 }
 
 td {
-  padding: 10px;
+  padding: 12px;
   text-align: center;
 }
 
 tr {
+  transition: 0.3s;
+}
+
+tr:nth-child(even) {
   background: rgba(255,255,255,0.05);
 }
 
@@ -147,9 +162,27 @@ tr:hover {
 /* ===== ACTION BUTTONS ===== */
 .edit-btn {
   background: #3498db;
-  margin-right: 5px;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
 .delete-btn {
   background: #e74c3c;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    grid-column: span 1;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
 }
